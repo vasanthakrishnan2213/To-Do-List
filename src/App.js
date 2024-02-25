@@ -9,6 +9,7 @@ function App () {
   const [div,setdiv] = useState([])
   const [p,setp] = useState()
   const [jp,setjp] = useState()
+  const [t,sett] = useState()
   
   const handlechange = (event) => {
     setp(event.target.value)
@@ -21,7 +22,7 @@ function App () {
     setdiv(e => [...e,newdiv])
     
     }
-    setp()
+    
   }
 
   const handlekeypress = (event) => {
@@ -39,7 +40,7 @@ function App () {
     setdiv(e => {
         const updatediv = [...e]
         if(i>=0 && i<updatediv.length) {
-           updatediv[i] = {text:p, pdisplay:{display: 'none'}, edisplay: {display: 'block'}}
+           updatediv[i] = {text:div[i].text, pdisplay:{display: 'none'}, edisplay: {display: 'block'}}
         }
         return updatediv;
     })
@@ -54,11 +55,19 @@ function App () {
     setdiv(e => {
       const updatedp = [...e]
       if(i>=0 && i<updatedp.length) {
-        console.log(updatedp[i].text)
-         updatedp[i] = {text:jp, pdisplay:{display: 'flex'}, edisplay: {display: 'none'}}
+        updatedp[i] = {text:jp, pdisplay:{display: 'flex'}, edisplay: {display: 'none'}}
       }
       return updatedp;
     })}
+    else {
+      setdiv(e => {
+        const updatedp = [...e]
+        if(i>=0 && i<updatedp.length) {
+          updatedp[i] = {text:div[i].text, pdisplay:{display: 'flex'}, edisplay: {display: 'none'}}
+        }
+        return updatedp;
+      })
+    }
     setjp()
   }
 
